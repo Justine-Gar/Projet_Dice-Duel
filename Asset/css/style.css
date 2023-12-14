@@ -8,7 +8,6 @@
   outline: 0;
   box-sizing: inherit;
 }
-
 body {
   font-family: 'Lato', sans-serif;
   background-color: rgb(209, 98, 98);
@@ -17,13 +16,6 @@ body {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-}
-
-/*
-  Player style
-*/
-.player {
-  
 }
 
 
@@ -41,11 +33,78 @@ main {
   overflow: hidden;
   display: flex;
 }
-
 .container {
   display: grid;
   place-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
+
+
+
+/*
+  Player style
+*/
+.player {
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 9rem;
+}
+.playerActive {
+  background-color: rgba(208, 208, 208, 0.4);
+}
+.playerActive .name {
+  font-weight: 500;
+}
+.playerActive .score {
+  font-weight: 200;
+}
+.playerActive .current {
+  opacity: 1;
+}
+
+
+/*
+  Element style
+*/
+.name {
+  position: relative;
+  font-size: 3rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.score {
+  font-size: 7rem;
+  font-weight:300;
+  color: crimson;
+  margin-bottom: auto;
+}
+.current {
+  background-color: crimson;
+  border-radius: 5px;
+  color: white;
+  width: 100%;
+  padding: 1.5rem;
+  text-align: center;
+}
+.currentText {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: white;
+}
+.currentScore {
+  font-size: 3rem;
+}
+
+
+
 /*
   Dice style
 */
@@ -56,13 +115,11 @@ main {
   transform-style: preserve-3d;
   transition: 1s ease;
 }
-
 @keyframes rolling {
   50% {
     transform: rotateX(455deg) rotateY(455deg);
   }
 }
-
 .face {
   position: absolute;
   width: 100%;
@@ -72,8 +129,6 @@ main {
   transform-style: preserve-3d;
   background: linear-gradient(100deg, #dcdcdc, #ffffff); 
 }
-
-
 .face::before {
   position: absolute;
   content: '';
@@ -93,8 +148,6 @@ main {
   border-radius: 50%;
   background: crimson;
 }
-
-
 .front {
   transform: translateZ(50px) ;
 }
@@ -113,7 +166,6 @@ main {
 .left {
   transform: rotateY(-90deg) translateZ(50px) ;
 }
-
 .front::after {
   margin: -10px 0 0 -10px;
 }
@@ -148,6 +200,8 @@ main {
               50px 50px crimson;
 }
 
+
+
 /*
   Roll Button style
 */
@@ -175,6 +229,7 @@ main {
 }
 
 
+
 /*
   NewGame Button style
 */
@@ -200,6 +255,7 @@ main {
 .newBtn:hover {
   font-size: 1.1em;
 }
+
 
 
 /*
