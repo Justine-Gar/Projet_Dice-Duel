@@ -49,3 +49,5 @@ const rollDice = random => {
 }
 
 rollBtn.addEventListener('click', randomDice);
+
+
