@@ -9,7 +9,40 @@
   </head>
 
   <body>
-    
+    <main>
+      <section>
+        <h2>Player 1</h2>
+        <p>0</p>
+        <div>
+          <p>current</p>
+        </div>
+      </section>
+      <section>
+        <h2>Player 2</h2>
+        <p>0</p>
+        <div>
+          <p>current</p>
+        </div>
+      </section>
+
+      <div class="container">
+
+        <button class="newBtn"><ion-icon name="add-circle-outline"></ion-icon>new game</button>
+
+        <div class="dice">
+          <div class="face front"></div>
+          <div class="face back"></div>
+          <div class="face top"></div>
+          <div class="face bottom"></div>
+          <div class="face right"></div>
+          <div class="face left"></div>
+        </div>
+
+        <button class="rollBtn"><ion-icon name="sync-outline"></ion-icon>roll dice</button>
+        <button class="holdBtn"><ion-icon name="download-outline"></ion-icon>hold</button>
+      </div>
+      
+    </main>
 
 
 
@@ -17,5 +50,7 @@
 
 
     <script src="Asset/js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </body>
 </html>

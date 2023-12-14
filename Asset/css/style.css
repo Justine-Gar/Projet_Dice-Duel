@@ -1,5 +1,224 @@
-
+/*
+  General style
+*/
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
 
 body {
   font-family: 'Lato', sans-serif;
+  background-color: rgb(209, 98, 98);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+/*
+  Main style
+*/
+main {
+  position: relative;
+  width: 80rem;
+  height: 50rem;
+  background-color: white;
+  backdrop-filter: blur(200px);
+  filter: blur();
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+  overflow: hidden;
+  display: flex;
+}
+
+.container {
+  display: grid;
+  place-items: center;
+}
+/*
+  Dice style
+*/
+.dice {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transition: 1s ease;
+}
+
+@keyframes rolling {
+  50% {
+    transform: rotateX(455deg) rotateY(455deg);
+  }
+}
+
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 2px solid #ffff;
+  transform-style: preserve-3d;
+  background: linear-gradient(100deg, #dcdcdc, #ffffff);
+  
+}
+
+
+.face::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #ebebeb;
+  transform: translateZ(-1px);
+}
+.face::after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: crimson;
+}
+
+
+.front {
+  transform: translateZ(50px) ;
+}
+.back {
+  transform: rotateX(180deg) translateZ(50px) ;
+}
+.top {
+   transform: rotateX(90deg) translateZ(50px) ;
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(50px) ;
+}
+.right {
+  transform: rotateY(90deg) translateZ(50px) ;
+}
+.left {
+  transform: rotateY(-90deg) translateZ(50px) ;
+}
+
+.front::after {
+  margin: -10px 0 0 -10px;
+}
+.back::after {
+  margin: -35px 0 0 -30px;
+  box-shadow: 40px 0 crimson,
+              0 25px crimson,
+              40px 25px crimson,
+              0 50px crimson,
+              40px 50px crimson;
+}
+.top::after {
+  margin: -30px 0 0 -30px;
+  box-shadow: 40px 40px crimson;
+}
+.bottom::after {
+  margin: -36px 0 0 -36px;
+  box-shadow: 26px 26px crimson,
+              52px 52px crimson,
+              52px 0 crimson,
+              0 52px crimson;
+}
+.right::after {
+  margin: -30px 0 0 -30px;
+  box-shadow: 40px 0 crimson,
+              0 40px crimson,
+              40px 40px crimson;
+}
+.left::after {
+  margin: -35px 0 0 -35px;
+  box-shadow: 25px 25px crimson,
+              50px 50px crimson;
+}
+
+/*
+  Roll Button style
+*/
+.rollBtn ion-icon {
+  width: 1.5em;
+  height: 1.5em;
+  color: crimson;
+  padding: 10px;
+}
+.rollBtn {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: lighter;
+  background-color: rgba(12, 135, 243, 0);
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px;
+  margin: 35px;
+}
+.rollBtn:hover {
+  font-size: 1.1em;
+}
+
+
+/*
+  NewGame Button style
+*/
+.newBtn ion-icon {
+  width: 1.5em;
+  height: 1.5em;
+  color: crimson;
+  padding: 10px;
+}
+.newBtn {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: lighter;
+  background-color: rgba(12, 135, 243, 0);
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px;
+  margin: 35px;
+}
+.newBtn:hover {
+  font-size: 1.1em;
+}
+
+
+/*
+  Hold Button style
+*/
+.holdBtn ion-icon {
+  width: 1.5em;
+  height: 1.5em;
+  color: crimson;
+  padding: 10px;
+}
+.holdBtn {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: lighter;
+  background-color: rgba(12, 135, 243, 0);
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px;
+  margin: 35px;
+}
+.holdBtn:hover {
+  font-size: 1.1em;
 }
