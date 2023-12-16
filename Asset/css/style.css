@@ -10,7 +10,7 @@
 }
 body {
   font-family: 'Lato', sans-serif;
-  background-color: rgb(209, 98, 98);
+  background-color: crimson;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -19,23 +19,24 @@ body {
 }
 
 
-
 /*
   Main style
 */
-main {
-  position: relative;
-  width: 80rem;
-  height: 50rem;
-  background-color: white;
-  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
-  border-radius: 9px;
-  overflow: hidden;
-  display: flex;
+.row{
+  height: 100%;
 }
 .container {
-  display: grid;
-  place-items: center;
+  width: 80rem;
+  height: 41rem;
+  background-color: white;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.506);
+  border-radius: 9px;
+  overflow: hidden;
+}
+.diceContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -44,17 +45,22 @@ main {
 }
 
 
-
 /*
   Player style
 */
-.player {
-  flex: 50%;
+.player1 {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 9rem;
 }
+.player2 {
+  text-align: center;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
 .playerActive {
   background-color: rgba(208, 208, 208, 0.4);
 }
@@ -67,6 +73,14 @@ main {
 .playerActive .current {
   opacity: 1;
 }
+.scorePlayer2 {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.curPlayer2 {
+  display: flex;
+  flex-direction: column-reverse;
+}
 
 
 /*
@@ -74,35 +88,31 @@ main {
 */
 .name {
   position: relative;
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: 300;
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
 .score {
-  font-size: 7rem;
+  font-size: 3rem;
   font-weight:300;
   color: crimson;
-  margin-bottom: auto;
 }
 .current {
   background-color: crimson;
   border-radius: 5px;
   color: white;
-  width: 100%;
-  padding: 1.5rem;
+  width: 100px;
   text-align: center;
 }
 .currentText {
   text-transform: uppercase;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+  font-size:  0.8rem;
   color: white;
 }
 .currentScore {
-  font-size: 3rem;
+  font-size: 1rem;
 }
-
 
 
 /*
@@ -201,7 +211,21 @@ main {
 }
 
 
-
+/*
+  position btn
+*/
+.placeBtn {
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: -115px;
+  right: 0;
+  bottom: 0;
+}
 /*
   Roll Button style
 */
@@ -212,11 +236,12 @@ main {
   padding: 10px;
 }
 .rollBtn {
-  display: flex;
-  align-items: center;
-  font-size: 1em;
+  flex-direction: column;
   text-transform: uppercase;
   font-weight: lighter;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgba(12, 135, 243, 0);
   cursor: pointer;
   color: rgb(0, 0, 0);
@@ -225,11 +250,8 @@ main {
   margin: 35px;
 }
 .rollBtn:hover {
-  font-size: 1.1em;
+  font-weight: 600;
 }
-
-
-
 /*
   NewGame Button style
 */
@@ -240,11 +262,12 @@ main {
   padding: 10px;
 }
 .newBtn {
-  display: flex;
-  align-items: center;
-  font-size: 1em;
+  flex-direction: column;
   text-transform: uppercase;
   font-weight: lighter;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgba(12, 135, 243, 0);
   cursor: pointer;
   color: rgb(0, 0, 0);
@@ -253,11 +276,8 @@ main {
   margin: 35px;
 }
 .newBtn:hover {
-  font-size: 1.1em;
+  font-weight: 600;
 }
-
-
-
 /*
   Hold Button style
 */
@@ -268,11 +288,12 @@ main {
   padding: 10px;
 }
 .holdBtn {
-  display: flex;
-  align-items: center;
-  font-size: 1em;
+  flex-direction: column;
   text-transform: uppercase;
   font-weight: lighter;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: rgba(12, 135, 243, 0);
   cursor: pointer;
   color: rgb(0, 0, 0);
@@ -281,5 +302,91 @@ main {
   margin: 35px;
 }
 .holdBtn:hover {
-  font-size: 1.1em;
+  font-weight: 600;
+}
+
+
+/*
+  MediaQ 
+*/
+@media screen and (min-width: 768px) {
+  .player2 {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .player1 {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .score {
+    position: relative;
+    top: 50px;
+    font-size: 3rem;
+    font-weight:300;
+    color: crimson;
+  }
+  .scorePlayer2 {
+    display: flex;
+    flex-direction: column;
+  }
+  .current2 {
+    display: flex;
+    flex-direction: column;
+  }
+  .placeBtn {
+    font-size: 1rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .holdBtn {
+    flex-direction: row;
+    position: relative;
+    bottom: -60px;
+  }
+  .rollBtn {
+    flex-direction: row;
+    position: relative;
+    bottom: -120px;
+  }
+  .newBtn {
+    flex-direction: row;
+    position: relative;
+    top: -115px;
+    right: 10px;
+  }
+  .name {
+    position: relative;
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .score {
+    font-size: 4rem;
+    font-weight:300;
+    color: crimson;
+  }
+  .current {
+    background-color: crimson;
+    border-radius: 5px;
+    color: white;
+    width: 110px;
+    text-align: center;
+  }
+  .currentText {
+    text-transform: uppercase;
+    font-size:  1rem;
+    color: white;
+  }
+  .currentScore {
+    font-size: 1.3rem;
+  }
+
 }
