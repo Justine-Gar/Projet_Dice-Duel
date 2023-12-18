@@ -229,9 +229,9 @@ body {
 /*
   Roll Button style
 */
-.rollBtn fa-dice-one {
-  width: 1.5em;
-  height: 1.5em;
+.fa-dice-one {
+  font-size: 1.4em;
+  padding: 10px;
   color: crimson;
   padding: 10px;
 }
@@ -255,11 +255,10 @@ body {
 /*
   NewGame Button style
 */
-.newBtn ion-icon {
-  width: 1.5em;
-  height: 1.5em;
-  color: crimson;
+.fa-circle-play {
+  font-size: 1.5em;
   padding: 10px;
+  color: crimson;
 }
 .newBtn {
   flex-direction: column;
@@ -281,9 +280,8 @@ body {
 /*
   Hold Button style
 */
-.holdBtn ion-icon {
-  width: 1.5em;
-  height: 1.5em;
+.fa-arrow-down{
+  font-size: 1.5em;
   color: crimson;
   padding: 10px;
 }
