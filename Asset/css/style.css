@@ -229,7 +229,7 @@ body {
 /*
   Roll Button style
 */
-.rollBtn ion-icon {
+.rollBtn fa-dice-one {
   width: 1.5em;
   height: 1.5em;
   color: crimson;
