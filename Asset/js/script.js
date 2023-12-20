@@ -15,12 +15,15 @@ const current1Score = document.getElementById('current1');
 const current2Score = document.getElementById('current2');
 const name1 = document.getElementById('name1');
 const name2 = document.getElementById('name2');
-const score1 = document.getElementById('score1');
-const score2 = document.getElementById('score2');
+const globalScore1 = document.getElementById('globalScore1');
+const globalScore2 = document.getElementById('globalScore2');
+const player1 = document.getElementById('player1');
+const player2 = document.getElementById('player2');
 
 
 let currentPlayer = 1;
 let current1PlayerScore = 0;
+let current2PlayerScore = 0;
 
 /*======New Game=====*/
 
@@ -77,6 +80,7 @@ const rollDice = (random) => {
     } else {
 
       current1PlayerScore = 0;
+      current2PlayerScore = 0;
       switchPlayer();
 
     }
@@ -85,28 +89,26 @@ const rollDice = (random) => {
 }
 
 const updateCurrentScore = (value) => {
-  current1PlayerScore += value;
+  current1PlayerScore = value;
   current1Score.textContent = current1PlayerScore;
+  current2PlayerScore = value;
+  current2Score.textContent = current2PlayerScore;
 }
 
 /*switch player */
 const switchPlayer = () => {
 
-
-  name1.classList.remove('playerActive');  
-  name2.classList.add('playerActive');
-
-  current1PlayerScore = 0;
-  current1Score.textContent = current1PlayerScore;
-
-  currentPlayer = 2;
+  const playerActive = document.querySelector('.playerActive');
+  const currentScore = document.querySelector('.currentScore')
+  
 }
 
 /*hold score */
 const holdScore = () => {
+
   if (currentPlayer === 1) {
     player1Score += current1PlayerScore;
-    score1.textContent = player1Score;
+    globalScore1.textContent = player1Score;
   } else {
 
   }

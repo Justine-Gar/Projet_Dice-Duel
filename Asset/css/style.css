@@ -48,19 +48,18 @@ body {
 /*
   Player style
 */
-.player1 {
+#player1 {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.player2 {
+#player2 {
   text-align: center;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
 }
-
 .playerActive {
   background-color: rgba(208, 208, 208, 0.4);
 }
@@ -308,13 +307,13 @@ body {
   MediaQ 
 */
 @media screen and (min-width: 768px) {
-  .player2 {
+  #player2 {
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
   }
-  .player1 {
+  #player1 {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -327,6 +326,10 @@ body {
     font-size: 3rem;
     font-weight:300;
     color: crimson;
+  }
+  .curPlayer2 {
+    display: flex;
+    flex-direction: column;
   }
   .scorePlayer2 {
     display: flex;
