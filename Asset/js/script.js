@@ -15,6 +15,7 @@ const dice = document.querySelector('.dice');
 //btns
 const rollBtn = document.querySelector('.rollBtn');
 const holdBtn = document.querySelector('.holdBtn');
+const newBtn = document.querySelector('.newBtn');
 //global score
 const globalScore1 = document.getElementById('globalScore1');
 const globalScore2 = document.getElementById('globalScore2');
@@ -29,6 +30,7 @@ globalScore2.textContent = 0;
 let scores = [0, 0];
 let currentScore = 0;
 let playerActive = 1;
+let diceRolling = false;
 
 //switch
 function switchPlayer() {
@@ -47,7 +49,7 @@ function switchPlayer() {
 }
 
 
-//==btn Roll==//
+//==btn RollDice==//
 function randomDice() {
 
   let random;
@@ -68,71 +70,109 @@ function randomDice() {
     randomDice();
   }
 }*/
-
 function rollDice (random) {
 
-  //debut animation dice
-  dice.style.animation = 'rolling 4s';
-  setTimeout(() => {
+ if (!diceRolling) {
 
-    switch (random) {
-      case 1:
-        dice.style.transform = 'rotateX(0deg) rotateY(0deg)';
-        currentScore = 0;
-        break;
-      case 6:
-        dice.style.transform = 'rotateX(180deg) rotateY(0deg)';
-        break;
-      case 2:
-        dice.style.transform = 'rotateX(-90deg) rotateY(0deg)';
-        break;
-      case 5:
-        dice.style.transform = 'rotateX(90deg) rotateY(0deg)';
-        break;
-      case 3:
-        dice.style.transform = 'rotateX(0deg) rotateY(90deg)';
-        break;
-      case 4:
-        dice.style.transform = 'rotateX(0deg) rotateY(-90deg)';
-        break;
+    diceRolling = true;
+    //debut animation dice
+    dice.style.animation = 'rolling 4s';
 
-      default:
-        break;
-    }
-    //arret animation dice
-    dice.style.animation = 'none'
+    setTimeout(() => {
 
-    if (random !== 1) {
-      //score add
-      currentScore += random;
-      //current1.textContent = currentScore;
-      document.getElementById(`current${playerActive}`).textContent = currentScore;
-    } else {
-      //change joueur 
-      switchPlayer()
-    }
-    
-  }, 4050);
+      switch (random) {
+        case 1:
+          dice.style.transform = 'rotateX(0deg) rotateY(0deg)';
+          currentScore = 0;
+          break;
+        case 6:
+          dice.style.transform = 'rotateX(180deg) rotateY(0deg)';
+          break;
+        case 2:
+          dice.style.transform = 'rotateX(-90deg) rotateY(0deg)';
+          break;
+        case 5:
+          dice.style.transform = 'rotateX(90deg) rotateY(0deg)';
+          break;
+        case 3:
+          dice.style.transform = 'rotateX(0deg) rotateY(90deg)';
+          break;
+        case 4:
+          dice.style.transform = 'rotateX(0deg) rotateY(-90deg)';
+          break;
+
+        default:
+          break;
+      }
+      //arret animation dice
+      dice.style.animation = 'none'
+
+      if (random !== 1) {
+        //score add
+        currentScore += random;
+        //current1.textContent = currentScore;
+        document.getElementById(`current${playerActive}`).textContent = currentScore;
+      } else {
+        //change joueur 
+        switchPlayer()
+      }
+
+      setTimeout(() => {
+
+        diceRolling = false;
+
+      }, 1080);
+
+    }, 4050);
+  }
 }
 
+ 
 rollBtn.addEventListener('click', randomDice);
 
 
 //==btn Hold==//
 
 function holdScore() {
-  scores[playerActive] = parseInt(scores[playerActive], 10) || 0;
-  scores[playerActive] += currentScore;
-  //console.log(scores);
-  document.getElementById(`globalScore${playerActive}`).textContent = scores[playerActive];
 
- if(scores[playerActive] >= 100) {
+  if (!diceRolling) {
 
- } else {
-  //switch de joueur
-  switchPlayer()
- }
+    //score bien un nombre
+    scores[playerActive] = parseInt(scores[playerActive], 6) || 0;
+    scores[playerActive] += currentScore;
+    //console.log(scores);
+    document.getElementById(`globalScore${playerActive}`).textContent = scores[playerActive];
+
+    if(scores[playerActive] >= 100) {
+
+    } else {
+    //switch de joueur
+    switchPlayer()
+    }
+  }
+  
 
 }
 
 holdBtn.addEventListener('click', holdScore);
+
+
+
+//==btn NewGame==//
+
+function newGame() {
+  //remise a 0 des globals
+  scores[0] = 0;
+  scores[1] = 0;
+  //affichage mise a jour
+  document.getElementById('globalScore1').textContent = '0';
+  document.getElementById('globalScore2').textContent = '0';
+  //remise a 0 variables
+  currentScore = 0;
+  playerActive = 1;
+  //remise a zéro dé
+  dice.style.animation = '';
+  dice.style.transform = 'rotateX(0deg) rotateY(0deg)';
+}
+
+newBtn.addEventListener('click', newGame);
