@@ -32,6 +32,8 @@ let currentScore = 0;
 let playerActive = 1;
 let diceRolling = false;
 
+
+
 //switch
 function switchPlayer() {
 
@@ -127,12 +129,11 @@ function rollDice (random) {
   }
 }
 
- 
 rollBtn.addEventListener('click', randomDice);
 
 
-//==btn Hold==//
 
+//==btn Hold==//
 function holdScore() {
 
   if (!diceRolling) {
@@ -159,7 +160,6 @@ holdBtn.addEventListener('click', holdScore);
 
 
 //==btn NewGame==//
-
 function newGame() {
   //remise a 0 des globals
   scores[0] = 0;
@@ -171,7 +171,7 @@ function newGame() {
   currentScore = 0;
   playerActive = 1;
   //remise a zéro dé
-  dice.style.animation = '';
+  dice.style.animation = 'none';
   dice.style.transform = 'rotateX(0deg) rotateY(0deg)';
 }
 
