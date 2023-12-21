@@ -30,6 +30,7 @@ globalScore2.textContent = 0;
 let scores = [0, 0];
 let currentScore = 0;
 let playerActive = 1;
+let gameplaying = true;
 let diceRolling = false;
 
 
@@ -53,13 +54,34 @@ function switchPlayer() {
 
 //==btn RollDice==//
 function randomDice() {
+ if (gameplaying) {
 
-  let random;
-  do {
-    random = Math.floor(Math.random() * 6) + 1;
-  } while (random < 1 || random > 6);
+  holdBtn.disabled = true;
 
-  rollDice(random);
+  let random = Math.floor(Math.random() * 6) + 1;
+
+  dice.style.animation = 'rolling 4s';
+
+  setTimeout(() => {
+
+    rollDice(random);
+    dice.style.animation = 'none';
+
+    if (random !== 1) {
+      //score add
+      currentScore += random;
+      //current1.textContent = currentScore;
+      document.getElementById(`current${playerActive}`).textContent = currentScore;
+    } else {
+      //change joueur 
+      document.getElementById(`current${playerActive}`).textContent = 0;
+      switchPlayer()
+    }
+    holdBtn.disabled = false;
+  }, 4050);
+
+  diceRolling = true;
+ }
 }
 /*function randomDice() {
   //1.generer un random 
@@ -72,17 +94,8 @@ function randomDice() {
     randomDice();
   }
 }*/
-function rollDice (random) {
-
- if (!diceRolling) {
-
-    diceRolling = true;
-    //debut animation dice
-    dice.style.animation = 'rolling 4s';
-
-    setTimeout(() => {
-
-      switch (random) {
+function rollDice (number) {
+      switch (number) {
         case 1:
           dice.style.transform = 'rotateX(0deg) rotateY(0deg)';
           currentScore = 0;
@@ -107,26 +120,7 @@ function rollDice (random) {
           break;
       }
       //arret animation dice
-      dice.style.animation = 'none'
-
-      if (random !== 1) {
-        //score add
-        currentScore += random;
-        //current1.textContent = currentScore;
-        document.getElementById(`current${playerActive}`).textContent = currentScore;
-      } else {
-        //change joueur 
-        switchPlayer()
-      }
-
-      setTimeout(() => {
-
-        diceRolling = false;
-
-      }, 1080);
-
-    }, 4050);
-  }
+      dice.style.animation = 'none';
 }
 
 rollBtn.addEventListener('click', randomDice);
@@ -136,10 +130,10 @@ rollBtn.addEventListener('click', randomDice);
 //==btn Hold==//
 function holdScore() {
 
-  if (!diceRolling) {
+  if (diceRolling && gameplaying) {
 
     //score bien un nombre
-    scores[playerActive] = parseInt(scores[playerActive], 6) || 0;
+    scores[playerActive] = parseInt(scores[playerActive], 10) || 0;
     scores[playerActive] += currentScore;
     //console.log(scores);
     document.getElementById(`globalScore${playerActive}`).textContent = scores[playerActive];
