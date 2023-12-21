@@ -83,17 +83,6 @@ function randomDice() {
   diceRolling = true;
  }
 }
-/*function randomDice() {
-  //1.generer un random 
-  const random = Math.floor(Math.random() * 6) + 1;
-  //2.condition/vérifié si nbr générer et entre 1 et 6
-  if (random >= 1 && random <= 6) {
-    rollDice(random);
-  }
-  else {
-    randomDice();
-  }
-}*/
 function rollDice (number) {
       switch (number) {
         case 1:
@@ -123,9 +112,6 @@ function rollDice (number) {
       dice.style.animation = 'none';
 }
 
-rollBtn.addEventListener('click', randomDice);
-
-
 
 //==btn Hold==//
 function holdScore() {
@@ -139,18 +125,15 @@ function holdScore() {
     document.getElementById(`globalScore${playerActive}`).textContent = scores[playerActive];
 
     if(scores[playerActive] >= 100) {
-
+      document.getElementById(`globalScore${playerActive}`).textContent = "Winner!";
+      rollBtn.disabled = true;
+      holdBtn.disabled = true;
     } else {
     //switch de joueur
     switchPlayer()
     }
   }
-  
-
 }
-
-holdBtn.addEventListener('click', holdScore);
-
 
 
 //==btn NewGame==//
@@ -167,6 +150,10 @@ function newGame() {
   //remise a zéro dé
   dice.style.animation = 'none';
   dice.style.transform = 'rotateX(0deg) rotateY(0deg)';
+  rollBtn.disabled = false;
+  holdBtn.disabled = false;
 }
 
 newBtn.addEventListener('click', newGame);
+holdBtn.addEventListener('click', holdScore);
+rollBtn.addEventListener('click', randomDice);
